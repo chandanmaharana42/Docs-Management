@@ -1,0 +1,92 @@
+
+.uploadCard{
+  width: 30vw;
+    height: 65vh;
+    margin: 5vh 5vw;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    border: 1px solid;
+    border-radius: 20px;
+    div{
+      button{
+        border-radius: 15px;
+        height: 50px;
+        background-color: white;
+        border: 1px solid var(--my-blue);
+        font-weight: bold;
+        cursor: pointer;
+        &:hover{
+          transition: 0.5s ease;
+          background-color: var(--my-blue);
+          color: white;
+          transform: scale(1.03);
+          box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+        }
+      }
+    }
+}
+.custom-file-input{
+  height: 56vh;
+  width: 100%;
+  border: 1px dashed;
+  border-radius: 30px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.custom-file-input::before {
+  content: '';
+  background-image: url(../../assets/icons/Imageupload.gif);
+  display: inline-block;
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  /* background: none; */
+  background: linear-gradient(top, #f9f9f9, #e3e3e3);
+  /* border: 1px solid #999; */
+  /* border-radius: 3px; */
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+ 
+
+.progressSection{
+  width: 30vw;
+  .gotoworksapce{
+    display: flex;
+    gap: 5px;
+    margin: 20px 0;
+    b{
+      cursor: pointer;
+      &:hover{
+        color: var(--my-blue) !important;
+      }
+    }
+  }
+  .noInprogress{
+    img{
+      height: 40vh;
+    }
+  }
+  .progress {
+    height: 20px;
+    margin-top: 5px;
+    background-color: lightgray;
+    border-radius: 4px;
+  }
+  
+  .progress-bar {
+    text-align: center;
+    line-height: 20px;
+    color: white;
+  }
+}
+
+

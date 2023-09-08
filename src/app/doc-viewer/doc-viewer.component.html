@@ -1,0 +1,54 @@
+<header class="docHeader">
+    <div class="docDetailsAndBreadcrumb">
+        <div>
+            <img *ngIf="this.pdfData.routeResolver[this.docid].type == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'"
+                     src="../../assets/icons/docs.png" alt="">
+                    <img *ngIf="this.pdfData.routeResolver[this.docid].type == 'application/pdf'"  
+                     src="../../assets/icons/pdf.png" alt="">
+                    <img *ngIf="this.pdfData.routeResolver[this.docid].type == 'application/vnd.openxmlformats-officedocument.presentationml.presentation'" 
+                     src="../../assets/icons/ppt.jpg" alt="">
+            <h2>{{ this.pdfData.routeResolver[this.docid].name }}</h2>
+        </div>
+        <nav>
+            <a routerLink="/dashboard">Dashboard</a>
+            <span> &gt; </span>
+            <span class="bread"> {{ this.pdfData.routeResolver[this.docid].name }} </span>
+        </nav>
+    </div>
+    <div class="profileSection">
+        <div (click)="gotoDashboard()" class="gotoHome">
+            <img src="../../assets/icons/home.png" alt="">
+        </div>
+        <div (click)="profileClicked = !profileClicked" class="user">
+            <img src="../../assets/icons/user.svg" alt="">
+        </div>
+    </div>
+</header>
+<p *ngIf="isLoading">Loading...</p>
+
+<div *ngIf="profileClicked" class="profilePopUp" >
+    <img src="assets/icons/user.svg" alt="">
+    <span>{{ currentUser.firstName }} {{ currentUser.lastName }} </span>
+    <!-- <span style="color: #9a9a9a;">{{ currentUser.userEmail }}</span> -->
+    <!-- <div class="allUserList">
+        <div (click)="changeUser(i)" class="userCard" *ngFor="let item of usersList;let i = index">
+            <img [src]="item.profilepicture" alt="">
+            <span>{{item.name}}</span>
+        </div>
+    </div> -->
+    <button (click)="logout()" class="signOut">Sign out</button>
+</div>
+
+
+<div class="pdfViewArea">
+    <div id="pdfContainer">
+        <div class="unsupported" *ngIf="unsupported">
+            <img src="../../assets/icons/No data.gif" alt="">
+            <span> This type of file doesnt support for view yet </span>
+        </div>
+    </div>
+    <!-- <div #pptViewer>
+      
+    </div> -->
+</div>
+

@@ -1,0 +1,150 @@
+.home{
+    // background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    // background-size: 400% 400%;
+    // animation: gradient 10s ease infinite;
+    // height: 100vh;
+    // @keyframes gradient {
+    //     0% {
+    //     background-position: 0% 50%;
+    //     }
+    //     50% {
+    //     background-position: 100% 50%;
+    //     }
+    //     100% {
+    //     background-position: 0% 50%;
+    //     }
+    // }
+    .back-image{
+        margin-top: 10px;
+        top: 0px;
+        filter: grayscale(100%);
+        opacity: 0.6;
+        filter: grayscale(100%);
+        opacity: 0.2;
+        z-index: 1;
+        position: absolute;
+    }
+    .front-image{
+        // background: rgba(255, 255, 255, 0.1);
+        // backdrop-filter: blur(5px);
+        z-index: 1;
+        position: absolute;
+        top: 0px;
+    }
+    .card{
+        // background: rgba(255, 255, 255, 0.1);
+        // backdrop-filter: blur(5px);
+        height: 70vh;
+        width: 35vw;
+        background-color: white;
+        border-radius: 20px;
+        z-index: 3;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+        overflow: hidden;
+        .header{
+            height: 100px;
+            background-color: rgb(245, 245, 245);
+            top: 0px;
+            position: relative;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            h1{
+                margin: 0px;
+            }
+            h4{
+                margin: 0px;
+                color: rgb(88, 88, 88);
+                // font-style: bold;
+            }
+        }
+        .inputContainer{
+            position: relative;
+            padding: 20px 40px;
+            height: 60vh;
+            .formContainer{
+                display: flex;
+                flex-direction: column;
+                // gap: 30px;
+                .form-group{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    padding-bottom: 5px;
+                    &:nth-child(3){
+                        margin-top: 15px;
+                    }
+                    label{
+                        font-size: 15px;
+                        font-weight: 500;
+                    }
+                    input{
+                        height: 40px;
+                        border-radius: 10px;
+                        padding: 0px 10px;
+                        border: 1px solid var(--my-gray);
+                        &:focus-visible{
+                            border: 1px solid var(--my-blue);
+                            outline: 0px !important;
+                        }
+                    }
+                    button{
+                        height: 40px;
+                        border: none;
+                        background-color: var(--my-blue);
+                        color: var(--my-white);
+                        border-radius: 10px;
+                        &:hover{
+                            box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+                          
+                        }
+                        .loading{
+                           
+                        }
+                    }
+                    .error{
+                        font-size: 12px;
+                        margin-top: -5px;
+                        color: red;
+                    }
+                    .register{
+                        font-size: 14px;
+                        .regLink{
+                            text-decoration: none !important;
+                            // font-style: ;
+                        }
+                    }
+                }
+            }
+            
+            // .account{
+            //     display: flex;
+            //     align-items: center;
+            //     justify-content: flex-start;
+            //     gap: 10px;
+            //     height: 50px;
+            //     border-bottom: thin solid rgb(175, 175, 175);
+            //     &:hover{
+            //         background-color: #5272d329;
+            //         cursor: pointer;
+            //         transform: scale(1.03);
+                    
+            //     }
+            //     &:active{
+            //         transform: scale(0.97);
+            //         background-color: #334bfa;
+            //         box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+            //         span{
+            //             color: white !important;
+            //         }
+            //     }
+            // }
+        }
+    }
+}

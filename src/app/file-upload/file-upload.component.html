@@ -1,0 +1,44 @@
+
+<div class="uploadCard">
+  <div style="
+      display: flex;
+      flex-direction: column;
+      gap:20px;
+    ">
+    <input class="custom-file-input" type="file" (change)="onFilesSelected($event)" multiple 
+    accept=".pdf,.docx,.doc,.ppt, .pptx">
+    <h3 *ngIf="uploadErrors.size==''">Click to upload files (pdf, doc, ppt)</h3>
+    <!-- <button (click)="uploadFiles()">Submit</button> -->
+  </div>
+  <div *ngIf="uploadErrors.size">
+    <p class="error">{{ uploadErrors.size }}</p>
+  </div>
+</div>
+
+<div class="progressSection">
+  <h2>Uploaded files:</h2>
+  <div *ngIf="files.length == 0" class="noInprogress">
+    <img src="../../assets/icons/No data.gif" alt="">
+    <h3>No File uploads in progress</h3>
+  </div>
+ 
+  <div *ngFor="let file of files">
+    <p>{{ file.name }} - {{ file.size / 1024 | number: '1.0-1' }} KB</p>
+    <div class="progress">
+      <div
+        class="progress-bar"
+        role="progressbar"
+        [style.width.%]="file.progress"
+        [style.background]="file.progress < 100 ? 'blue' : 'green'"
+      >
+        {{ file.progress }}%
+      </div>
+    </div>
+  </div>
+  <div class="gotoworksapce" *ngIf="completed">
+    <span>Files uploaded to </span><b (click)="gotoWorkspace()">Workspace</b>
+  </div>
+</div>
+
+
+  

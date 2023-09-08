@@ -1,0 +1,68 @@
+<div class="home">
+    <img class="back-image" src="assets/icons/backgroung.svg"
+      alt="">
+    <img class="front-image" src="assets/icons/backgroung.svg"
+    alt="">
+    <div class="card">
+        <section class="header">
+            <!-- <h4>Register</h4> -->
+            <h1>Signup </h1>
+        </section>
+        <section class="inputContainer">
+
+            <form [formGroup]="form" class="formContainer" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input placeholder="Enter your First Name" autofocus type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['firstName'].errors }" />
+                    <div *ngIf="submitted && f['firstName'].errors" class="invalid-feedback">
+                        <div class="error" *ngIf="f['firstName'].errors['required']">First Name is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" placeholder="Enter your Last Name" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['lastName'].errors }" />
+                    <div *ngIf="submitted && f['lastName'].errors" class="invalid-feedback">
+                        <div class="error" *ngIf="f['lastName'].errors['required']">Last Name is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" placeholder="Enter your Username" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['username'].errors }" />
+                    <div *ngIf="submitted && f['username'].errors" class="invalid-feedback">
+                        <div class="error" *ngIf="f['username'].errors['required']">Username is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div style="display: flex;align-items: center;">
+                        <input style="width: 95%;" [type]="showPassword ? 'text' : 'password'"
+                         placeholder="Enter your password" formControlName="password" class="form-control"
+                         [ngClass]="{ 'is-invalid': submitted && f['password'].errors }" />
+                         <img style="height: 20px;
+                            width: 20px;
+                            margin-left: -30px;cursor:pointer" 
+                            (click)="showPassword = true" *ngIf="!showPassword" src="assets/icons/show.png" alt="">
+                         <img style="height: 20px;
+                            width: 20px;
+                            margin-left: -30px;cursor:pointer"
+                            (click)="showPassword = false" *ngIf="showPassword" src="assets/icons/hide.png" alt="">
+                    </div>
+                    
+                    <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                        <div class="error" *ngIf="f['password'].errors['required']">Password is required</div>
+                        <div class="error" *ngIf="f['password'].errors['minlength']">Password must be at least 6 characters</div>
+                    </div>
+                </div>
+                <div class="form-group buttonContainer">
+                    <button [disabled]="loading" class="register">
+                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                        Register
+                    </button>
+                    <a routerLink="/login" class="regLink">Cancel</a>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>
+
+

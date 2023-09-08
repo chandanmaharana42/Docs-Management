@@ -1,1 +1,50 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Open+Sans:wght@300;400;500;700&family=Roboto:wght@400;500;700&display=swap');
+@import '~ngx-toastr/toastr.css';
+:root {
+    --scroll-bar-color: #c5c5c5;
+    --scroll-bar-bg-color: #f6f6f6;
+    --my-gray : #c5c5c5;
+    --my-blue:#334bfa;
+    --my-white:#ffffff;
+}
+* {
+    font-family: "Open sans";
+    scrollbar-width: thin;
+    scrollbar-color: var(--scroll-bar-color) var(--scroll-bar-bg-color);
+}
+
+*::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+*::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--scroll-bar-color);
+    border-radius: 20px;
+    border: 3px solid var(--scroll-bar-bg-color);
+}
+body{
+    margin: 0px !important;
+}
+.toast-container{
+    position: absolute;
+    z-index: 9;
+    bottom: 0px;
+}
+.disabled{
+    background: var(--my-gray) !important;
+    border: none;
+    color: black;
+    cursor: no-drop;
+    &:hover{
+        box-shadow: none !important;
+        transform: none;
+        transition: none;
+    }
+}

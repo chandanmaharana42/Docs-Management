@@ -1,0 +1,82 @@
+<section class="docCards">
+    <header>
+        <h2>Tashbin</h2>
+        <div class="emptyTrash" >
+            <button [ngClass]="{'disabled': emptyList}" (click)="openPopupforAll()">Empty Trash</button>
+        </div>
+    </header>
+
+<div *ngIf="emptyList" class="emptyList">
+    <img src="assets/icons/No data.gif" alt="">
+    <div>
+        <span>Trash is empty ! docs will apper if you delete from</span> <b (click)="openWorkSpace()"> Workspace</b>
+    </div>
+    
+</div>
+<div class="trashList">
+    <div *ngIf="!emptyList" class="cardContainer">
+       
+        <div  class="card" *ngFor="let item of trashList 
+        ;let i = index">
+            <div class="cardTop">
+                <div class="cardImage">
+                    <img *ngIf="item.type == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'"
+                     src="../../assets/icons/docs.png" alt="">
+                    <img *ngIf="item.type == 'application/pdf'"  
+                     src="../../assets/icons/pdf.png" alt="">
+                    <img *ngIf="item.type == 'application/vnd.openxmlformats-officedocument.presentationml.presentation'" 
+                     src="../../assets/icons/ppt.jpg" alt="">
+                </div>
+                
+                <div class="type">
+                    <span  *ngIf="item.type == 'application/pdf'">Pdf</span>
+                    <span  *ngIf="item.type == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'">Doc</span>
+                    <span *ngIf="item.type == 'application/vnd.openxmlformats-officedocument.presentationml.presentation'">pptx</span>
+                </div>
+                <div class="deleteDoc" (click)="openPopup(i)">
+                    <img src="../../assets/icons/trash.svg" alt="">
+                </div>
+            </div>
+            <div class="cardBottom">
+                <div>
+                    <!-- <span class="stData">Name :</span> -->
+                    <span style="
+                    font-size: 20px;
+                    width: 100%;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                " [ngClass]="{'doc': item.type !== 'application/pdf' ,'pdf': item.type == 'application/pdf'}" class="stData">{{item.name}}</span>
+                </div>
+                <div>
+                    <span class="stData">Uploaded by :</span>
+                    <span class="dyData">{{item.uploader}}</span>
+                </div>
+                <div>
+                    <span class="stData">Date : </span>
+                    <span class="dyData">{{item.date}}</span>
+                </div>
+                <div [routerLink]="['/dashboard/docDetails', i]" class="openButton" style="justify-content: center;">
+                    <button>Open</button>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <div class="deletePopup" *ngIf="deletePopup">
+        <div class="deleteCard">
+            <h2>Are you sure ?</h2>
+            <span *ngIf="deleteAll"> Do you really want to delete all docs ?</span>
+            <div *ngIf="deleteAll" class="buttonSection">
+                <button (click)="deleteAllDocsFromTrash()" class="delete">Delete</button>
+                <button (click)="canceldeletePopup()" class="cancel">Cancel</button>
+            </div>
+            <span *ngIf="!deleteAll"> Do you really want to delete the file :</span><b *ngIf="!deleteAll">"{{ currentDoc.name }}" ?</b>
+            <div *ngIf="!deleteAll" class="buttonSection">
+                <button (click)="deleteDocPer(curIndex)" class="delete">Delete</button>
+                <button (click)="canceldeletePopup()" class="cancel">Cancel</button>
+            </div>
+        </div>
+    </div>  
+</div>
+
+</section>

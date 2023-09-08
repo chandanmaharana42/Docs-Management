@@ -1,0 +1,68 @@
+<section class="mainContainer">
+    <aside>
+        <section [ngClass]="{'exapanded': expanded,'collapse': !expanded}" class="sidenavContainer">
+            <div class="companyLogo">
+                <div (click)="expanded = !expanded" class="logo">
+                    <img src="assets/icons/google-docs.png" alt="">
+                    <h2 *ngIf="expanded">Docs</h2>
+                </div>
+                <div *ngIf="expanded" class="excoIcon">
+                    <button (click)="expanded = false">
+                        <img src="../../assets/icons/icons8-left-arrow-50.png" alt="">
+                    </button>
+                </div>
+            </div>
+            <div class="sidenav">
+                <div [ngClass]="{'selected': currentSelected == 1}" (click)="currentSelected = 1" class="workspace">
+                    <img src="assets/icons/dash.svg" alt="">
+                    <span *ngIf="expanded">Workspace</span>
+                </div>
+                <div [ngClass]="{'selected': currentSelected == 2}" (click)="currentSelected = 2" class="workspace">
+                    <img src="assets/icons/file-upload.svg" alt="">
+                    <span *ngIf="expanded">File Upload</span>
+                </div>
+                <div [ngClass]="{'selected': currentSelected == 3}" (click)="currentSelected = 3" class="trash"> 
+                    <img src="assets/icons/trash.svg" alt="">
+                    <span *ngIf="expanded">Trash</span>
+                </div>
+            </div>
+            <div class="sidenavFooter">
+            </div>
+        </section>
+    </aside>
+    <main>
+        <header>
+         <div class="searchBarSection">
+            <div class="searchContainer">
+                <img src="assets/icons/search.svg" alt="">
+                <input placeholder="Search for any document" [(ngModel)]="searchKey"  type="text">
+            </div>
+         </div>
+         <div class="profileSection">
+            <div class="userList"></div>
+            <div class="user" (click)="profileClicked = !profileClicked">
+                <img src="../../assets/icons/user.svg" alt="">
+            </div>
+         </div>
+        </header>
+        <section>
+            <app-trash (messageEvent)="receiveMessage($event)" *ngIf="currentSelected == 3"></app-trash>
+            <app-file-upload (messageEvent)="receiveMessage($event)" style="display: flex;" *ngIf="currentSelected == 2"></app-file-upload>
+            <app-doc-workspace (messageEvent)="receiveMessage($event)" [searchText]="searchKey" *ngIf="currentSelected == 1"></app-doc-workspace>
+        </section>
+        <div *ngIf="profileClicked" class="profilePopUp" >
+            <img src="assets/icons/user.svg" alt="">
+            <span>{{ currentUser.firstName }} {{ currentUser.lastName }} </span>
+            <!-- <span style="color: #9a9a9a;">{{ currentUser.userEmail }}</span> -->
+            <!-- <div class="allUserList">
+                <div (click)="changeUser(i)" class="userCard" *ngFor="let item of usersList;let i = index">
+                    <img [src]="item.profilepicture" alt="">
+                    <span>{{item.name}}</span>
+                </div>
+            </div> -->
+            <button (click)="logout()" class="signOut">Sign out</button>
+        </div>
+    </main>
+</section>
+
+<!-- <footer></footer> -->

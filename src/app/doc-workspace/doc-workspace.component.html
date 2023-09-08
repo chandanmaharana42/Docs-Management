@@ -1,0 +1,63 @@
+
+<section class="docCards">
+    <h1>Documents</h1>
+    <div *ngIf="emptyList" class="emptyList">
+        <img src="assets/icons/No data.gif" alt="">
+        <div>
+            <span>No documents found! try uploading some </span> <b (click)="openUpload()"> here</b>
+        </div>
+        
+        
+        
+    </div>
+    <div *ngIf="!emptyList"  class="cardContainer">
+       
+        <div  class="card" *ngFor="let item of docsList | filter:searchText
+        ;let i = index">
+            <div class="cardTop">
+                <div class="cardImage">
+                    <img *ngIf="item.type == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'"
+                     src="../../assets/icons/docs.png" alt="">
+                    <img *ngIf="item.type == 'application/pdf'"  
+                     src="../../assets/icons/pdf.png" alt="">
+                    <img *ngIf="item.type == 'application/vnd.openxmlformats-officedocument.presentationml.presentation'" 
+                     src="../../assets/icons/ppt.jpg" alt="">
+                </div>
+                
+                <div class="type">
+                    <span  *ngIf="item.type == 'application/pdf'">Pdf</span>
+                    <span  *ngIf="item.type == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'">Doc</span>
+                    <span *ngIf="item.type == 'application/vnd.openxmlformats-officedocument.presentationml.presentation'">pptx</span>
+                </div>
+                <div class="deleteDoc" (click)="deleteDoc(i)">
+                    <img src="../../assets/icons/trash.svg" alt="">
+                </div>
+            </div>
+            <div class="cardBottom">
+                <div>
+                    <!-- <span class="stData">Name :</span> -->
+                    <span style="
+                    font-size: 20px;
+                    width: 100%;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                " [ngClass]="{'doc': item.type !== 'application/pdf' ,'pdf': item.type == 'application/pdf'}" class="stData">{{item.name}}</span>
+                </div>
+                <div>
+                    <span class="stData">Uploaded by :</span>
+                    <span class="dyData">{{item.uploader}}</span>
+                </div>
+                <div>
+                    <span class="stData">Date : </span>
+                    <span class="dyData">{{item.date}}</span>
+                </div>
+                <div [routerLink]="['/dashboard/docDetails', i]" class="openButton" style="justify-content: center;">
+                    <button>Open</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</section>
+
